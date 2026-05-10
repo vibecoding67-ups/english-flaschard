@@ -1,0 +1,130 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FlashcardItem snapshots > renders with status mastered 1`] = `
+"<article data-v-e8973c3b="" class="flashcard-item flashcard-item--mastered">
+  <div data-v-e8973c3b="" class="card-header">
+    <h3 data-v-e8973c3b="" class="card-word">ephemeral</h3><span data-v-e8973c3b="" class="status-badge status-badge--mastered" aria-label="Status: Hafal">Hafal ✓</span>
+  </div>
+  <div data-v-e8973c3b="" class="card-body">
+    <p data-v-e8973c3b="" class="card-meaning"><span data-v-e8973c3b="" class="field-label">Arti:</span> berlangsung singkat</p>
+    <p data-v-e8973c3b="" class="card-example"><span data-v-e8973c3b="" class="field-label">Contoh:</span><em data-v-e8973c3b="">The ephemeral beauty of cherry blossoms.</em></p>
+  </div>
+  <div data-v-e8973c3b="" class="card-footer"><span data-v-e8973c3b="" class="card-date">Ditambahkan 15 Jun 2025</span>
+    <div data-v-e8973c3b="" class="card-actions"><button data-v-e8973c3b="" class="btn btn-status btn-status--review" type="button">Tandai Perlu Diulang</button><button data-v-e8973c3b="" class="btn btn-delete" type="button" aria-label="\`Hapus flashcard \${card.word}\`"> 🗑️ Hapus </button></div>
+  </div>
+</article>"
+`;
+
+exports[`FlashcardItem snapshots > renders with status review 1`] = `
+"<article data-v-e8973c3b="" class="flashcard-item flashcard-item--review">
+  <div data-v-e8973c3b="" class="card-header">
+    <h3 data-v-e8973c3b="" class="card-word">ephemeral</h3><span data-v-e8973c3b="" class="status-badge status-badge--review" aria-label="Status: Perlu Diulang">Perlu Diulang</span>
+  </div>
+  <div data-v-e8973c3b="" class="card-body">
+    <p data-v-e8973c3b="" class="card-meaning"><span data-v-e8973c3b="" class="field-label">Arti:</span> berlangsung singkat</p>
+    <p data-v-e8973c3b="" class="card-example"><span data-v-e8973c3b="" class="field-label">Contoh:</span><em data-v-e8973c3b="">The ephemeral beauty of cherry blossoms.</em></p>
+  </div>
+  <div data-v-e8973c3b="" class="card-footer"><span data-v-e8973c3b="" class="card-date">Ditambahkan 15 Jun 2025</span>
+    <div data-v-e8973c3b="" class="card-actions"><button data-v-e8973c3b="" class="btn btn-status btn-status--mastered" type="button">Tandai Hafal</button><button data-v-e8973c3b="" class="btn btn-delete" type="button" aria-label="\`Hapus flashcard \${card.word}\`"> 🗑️ Hapus </button></div>
+  </div>
+</article>"
+`;
+
+exports[`SessionSummary snapshots > renders all mastered 1`] = `
+"<div data-v-5361ae24="" class="session-summary session-summary--perfect">
+  <!-- Celebratory header for perfect score -->
+  <div data-v-5361ae24="" class="perfect-banner" role="status" aria-live="polite"><span data-v-5361ae24="" class="perfect-emoji" aria-hidden="true">🎉</span>
+    <h2 data-v-5361ae24="" class="perfect-title">Luar Biasa! Semua Hafal!</h2>
+    <p data-v-5361ae24="" class="perfect-subtitle">Kamu berhasil menghafal semua kata dalam sesi ini.</p>
+  </div><!-- Stats grid -->
+  <div data-v-5361ae24="" class="stats-grid" role="list" aria-label="Hasil sesi quiz">
+    <div data-v-5361ae24="" class="stat-card stat-card--total" role="listitem"><span data-v-5361ae24="" class="stat-value">5</span><span data-v-5361ae24="" class="stat-label">Total Kartu</span></div>
+    <div data-v-5361ae24="" class="stat-card stat-card--mastered" role="listitem"><span data-v-5361ae24="" class="stat-value">5</span><span data-v-5361ae24="" class="stat-label">Hafal ✓</span></div>
+    <div data-v-5361ae24="" class="stat-card stat-card--review" role="listitem"><span data-v-5361ae24="" class="stat-value">0</span><span data-v-5361ae24="" class="stat-label">Perlu Diulang</span></div>
+  </div><!-- Percentage bar -->
+  <div data-v-5361ae24="" class="progress-section" aria-label="Persentase hafal">
+    <div data-v-5361ae24="" class="progress-header"><span data-v-5361ae24="" class="progress-label">Persentase Hafal</span><span data-v-5361ae24="" class="progress-value">100%</span></div>
+    <div data-v-5361ae24="" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+      <div data-v-5361ae24="" class="progress-fill progress-fill--perfect" style="width: 100%;"></div>
+    </div>
+  </div><!-- Action buttons -->
+  <div data-v-5361ae24="" class="summary-actions"><button data-v-5361ae24="" type="button" class="btn btn-restart"> 🔄 Quiz Lagi </button><button data-v-5361ae24="" type="button" class="btn btn-home"> 🏠 Ke Dashboard </button></div>
+</div>"
+`;
+
+exports[`SessionSummary snapshots > renders all review 1`] = `
+"<div data-v-5361ae24="" class="session-summary">
+  <!-- Celebratory header for perfect score -->
+  <!-- Normal header -->
+  <div data-v-5361ae24="" class="summary-header">
+    <h2 data-v-5361ae24="" class="summary-title">Sesi Selesai!</h2>
+    <p data-v-5361ae24="" class="summary-subtitle">Berikut hasil belajar kamu:</p>
+  </div><!-- Stats grid -->
+  <div data-v-5361ae24="" class="stats-grid" role="list" aria-label="Hasil sesi quiz">
+    <div data-v-5361ae24="" class="stat-card stat-card--total" role="listitem"><span data-v-5361ae24="" class="stat-value">5</span><span data-v-5361ae24="" class="stat-label">Total Kartu</span></div>
+    <div data-v-5361ae24="" class="stat-card stat-card--mastered" role="listitem"><span data-v-5361ae24="" class="stat-value">0</span><span data-v-5361ae24="" class="stat-label">Hafal ✓</span></div>
+    <div data-v-5361ae24="" class="stat-card stat-card--review" role="listitem"><span data-v-5361ae24="" class="stat-value">5</span><span data-v-5361ae24="" class="stat-label">Perlu Diulang</span></div>
+  </div><!-- Percentage bar -->
+  <div data-v-5361ae24="" class="progress-section" aria-label="Persentase hafal">
+    <div data-v-5361ae24="" class="progress-header"><span data-v-5361ae24="" class="progress-label">Persentase Hafal</span><span data-v-5361ae24="" class="progress-value">0%</span></div>
+    <div data-v-5361ae24="" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+      <div data-v-5361ae24="" class="progress-fill progress-fill--low" style="width: 0%;"></div>
+    </div>
+  </div><!-- Action buttons -->
+  <div data-v-5361ae24="" class="summary-actions"><button data-v-5361ae24="" type="button" class="btn btn-restart"> 🔄 Quiz Lagi </button><button data-v-5361ae24="" type="button" class="btn btn-home"> 🏠 Ke Dashboard </button></div>
+</div>"
+`;
+
+exports[`SessionSummary snapshots > renders mixed results 1`] = `
+"<div data-v-5361ae24="" class="session-summary">
+  <!-- Celebratory header for perfect score -->
+  <!-- Normal header -->
+  <div data-v-5361ae24="" class="summary-header">
+    <h2 data-v-5361ae24="" class="summary-title">Sesi Selesai!</h2>
+    <p data-v-5361ae24="" class="summary-subtitle">Berikut hasil belajar kamu:</p>
+  </div><!-- Stats grid -->
+  <div data-v-5361ae24="" class="stats-grid" role="list" aria-label="Hasil sesi quiz">
+    <div data-v-5361ae24="" class="stat-card stat-card--total" role="listitem"><span data-v-5361ae24="" class="stat-value">5</span><span data-v-5361ae24="" class="stat-label">Total Kartu</span></div>
+    <div data-v-5361ae24="" class="stat-card stat-card--mastered" role="listitem"><span data-v-5361ae24="" class="stat-value">3</span><span data-v-5361ae24="" class="stat-label">Hafal ✓</span></div>
+    <div data-v-5361ae24="" class="stat-card stat-card--review" role="listitem"><span data-v-5361ae24="" class="stat-value">2</span><span data-v-5361ae24="" class="stat-label">Perlu Diulang</span></div>
+  </div><!-- Percentage bar -->
+  <div data-v-5361ae24="" class="progress-section" aria-label="Persentase hafal">
+    <div data-v-5361ae24="" class="progress-header"><span data-v-5361ae24="" class="progress-label">Persentase Hafal</span><span data-v-5361ae24="" class="progress-value">60%</span></div>
+    <div data-v-5361ae24="" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+      <div data-v-5361ae24="" class="progress-fill progress-fill--low" style="width: 60%;"></div>
+    </div>
+  </div><!-- Action buttons -->
+  <div data-v-5361ae24="" class="summary-actions"><button data-v-5361ae24="" type="button" class="btn btn-restart"> 🔄 Quiz Lagi </button><button data-v-5361ae24="" type="button" class="btn btn-home"> 🏠 Ke Dashboard </button></div>
+</div>"
+`;
+
+exports[`StreakBadge snapshots > renders streak 0 with no last date 1`] = `
+"<div data-v-0ad213de="" class="streak-badge">
+  <div data-v-0ad213de="" class="streak-main"><span data-v-0ad213de="" class="streak-fire" aria-hidden="true">🔥</span>
+    <div data-v-0ad213de="" class="streak-info"><span data-v-0ad213de="" class="streak-count" aria-label="\`\${streak} hari berturut-turut\`">0</span><span data-v-0ad213de="" class="streak-label">hari berturut-turut</span></div>
+    <!--v-if-->
+  </div>
+  <div data-v-0ad213de="" class="streak-date"><span data-v-0ad213de="" class="date-text date-text--empty"> Belum pernah belajar </span></div>
+  <!--v-if-->
+</div>"
+`;
+
+exports[`StreakBadge snapshots > renders streak 7 (milestone) 1`] = `
+"<div data-v-0ad213de="" class="streak-badge streak-badge--milestone">
+  <div data-v-0ad213de="" class="streak-main"><span data-v-0ad213de="" class="streak-fire" aria-hidden="true">🔥</span>
+    <div data-v-0ad213de="" class="streak-info"><span data-v-0ad213de="" class="streak-count" aria-label="\`\${streak} hari berturut-turut\`">7</span><span data-v-0ad213de="" class="streak-label">hari berturut-turut</span></div><span data-v-0ad213de="" class="milestone-star" title="Milestone! Kelipatan 7 hari" aria-label="Milestone tercapai!"> ⭐ </span>
+  </div>
+  <div data-v-0ad213de="" class="streak-date"><span data-v-0ad213de="" class="date-text"> Terakhir belajar: Minggu, 15 Juni 2025</span></div>
+  <div data-v-0ad213de="" class="milestone-banner" role="status" aria-live="polite"> 🎉 Selamat! Kamu sudah belajar 7 hari berturut-turut! </div>
+</div>"
+`;
+
+exports[`StreakBadge snapshots > renders streak 14 (milestone) 1`] = `
+"<div data-v-0ad213de="" class="streak-badge streak-badge--milestone">
+  <div data-v-0ad213de="" class="streak-main"><span data-v-0ad213de="" class="streak-fire" aria-hidden="true">🔥</span>
+    <div data-v-0ad213de="" class="streak-info"><span data-v-0ad213de="" class="streak-count" aria-label="\`\${streak} hari berturut-turut\`">14</span><span data-v-0ad213de="" class="streak-label">hari berturut-turut</span></div><span data-v-0ad213de="" class="milestone-star" title="Milestone! Kelipatan 7 hari" aria-label="Milestone tercapai!"> ⭐ </span>
+  </div>
+  <div data-v-0ad213de="" class="streak-date"><span data-v-0ad213de="" class="date-text"> Terakhir belajar: Minggu, 8 Juni 2025</span></div>
+  <div data-v-0ad213de="" class="milestone-banner" role="status" aria-live="polite"> 🎉 Selamat! Kamu sudah belajar 14 hari berturut-turut! </div>
+</div>"
+`;
