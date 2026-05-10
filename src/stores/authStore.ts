@@ -40,10 +40,12 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function signInWithGoogle() {
+    // Pakai URL production kalau ada, fallback ke localhost untuk development
+    const baseUrl = import.meta.env.VITE_APP_URL ?? window.location.origin
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${window.location.origin}/#/`,
+        redirectTo: `${baseUrl}/#/`,
       },
     })
     if (error) throw error
