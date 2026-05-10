@@ -7,18 +7,32 @@ import { useAuthStore } from '@/stores/authStore'
 const router = useRouter()
 const authStore = useAuthStore()
 
-onMounted(async () => {
-  // Supabase otomatis proses token dari URL hash saat getSession dipanggil
-  const { data } = await supabase.auth.getSession()
+onMounted(() => {
+  // Listen untuk auth state change — Supabase akan fire ini
+  // setelah berhasil exchange token dari URL
+  const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+    if (event === 'SIGNED_IN' && session) {
+      authStore.user = session.user
+      authStore.session = session
+      subscription.unsubscribe()
+      router.replace('/')
+    } else if (event === 'SIGNED_OUT' || (!session && event !== 'INITIAL_SESSION')) {
+      subscription.unsubscribe()
+      router.replace('/auth')
+    }
+  })
 
-  if (data.session) {
-    authStore.user = data.session.user
-    authStore.session = data.session
-    router.replace('/')
-  } else {
-    // Gagal — kembali ke login
-    router.replace('/auth')
-  }
+  // Timeout fallback — kalau 5 detik tidak ada event, cek manual
+  setTimeout(async () => {
+    const { data } = await supabase.auth.getSession()
+    if (data.session) {
+      authStore.user = data.session.user
+      authStore.session = data.session
+      router.replace('/')
+    } else {
+      router.replace('/auth')
+    }
+  }, 5000)
 })
 </script>
 
