@@ -51,6 +51,15 @@ router.beforeEach(async (to) => {
     await authStore.init()
   }
 
+  // Handle OAuth callback — URL mengandung access_token di hash
+  // Contoh: /#/access_token=xxx atau /#access_token=xxx
+  const hash = window.location.hash
+  if (hash.includes('access_token=')) {
+    // Biarkan Supabase proses token, lalu redirect ke dashboard
+    await authStore.init()
+    return { name: 'dashboard' }
+  }
+
   if (to.meta.requiresAuth && !authStore.isLoggedIn) {
     return { name: 'auth' }
   }

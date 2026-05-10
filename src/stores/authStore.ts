@@ -13,12 +13,15 @@ export const useAuthStore = defineStore('auth', () => {
   // Initialize — cek session yang sudah ada
   async function init() {
     loading.value = true
+
+    // Handle OAuth callback — Supabase menyimpan token di URL hash
+    // Ini dipanggil otomatis oleh getSession() tapi kita perlu pastikan
     const { data } = await supabase.auth.getSession()
     session.value = data.session
     user.value = data.session?.user ?? null
     loading.value = false
 
-    // Listen untuk perubahan auth state
+    // Listen untuk perubahan auth state (termasuk setelah OAuth callback)
     supabase.auth.onAuthStateChange((_event, newSession) => {
       session.value = newSession
       user.value = newSession?.user ?? null
