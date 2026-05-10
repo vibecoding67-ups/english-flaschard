@@ -15,4 +15,7 @@ app.use(router)
 const authStore = useAuthStore()
 authStore.init().then(() => {
   app.mount('#app')
+}).catch(() => {
+  // Mount tetap jalan meskipun auth gagal
+  app.mount('#app')
 })

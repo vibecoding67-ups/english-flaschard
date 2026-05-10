@@ -46,18 +46,23 @@ const router = createRouter({
 router.beforeEach(async (to) => {
   const authStore = useAuthStore()
 
+  // Kalau ada access_token di URL hash, biarkan Supabase proses dulu
+  // lalu redirect ke dashboard setelah session terbentuk
+  const hash = window.location.hash
+  if (hash.includes('access_token=')) {
+    // Tunggu sebentar biar Supabase selesai proses token
+    await new Promise(resolve => setTimeout(resolve, 500))
+    await authStore.init()
+    if (authStore.isLoggedIn) {
+      // Bersihkan token dari URL lalu ke dashboard
+      window.history.replaceState(null, '', window.location.pathname)
+      return { name: 'dashboard' }
+    }
+  }
+
   // Tunggu sampai auth selesai init
   if (authStore.loading) {
     await authStore.init()
-  }
-
-  // Handle OAuth callback — URL mengandung access_token di hash
-  // Contoh: /#/access_token=xxx atau /#access_token=xxx
-  const hash = window.location.hash
-  if (hash.includes('access_token=')) {
-    // Biarkan Supabase proses token, lalu redirect ke dashboard
-    await authStore.init()
-    return { name: 'dashboard' }
   }
 
   if (to.meta.requiresAuth && !authStore.isLoggedIn) {
