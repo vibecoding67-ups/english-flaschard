@@ -11,6 +11,12 @@ const router = createRouter({
       meta: { requiresGuest: true },
     },
     {
+      // Halaman khusus untuk handle OAuth callback
+      path: '/auth/callback',
+      name: 'auth-callback',
+      component: () => import('@/views/AuthCallbackView.vue'),
+    },
+    {
       path: '/',
       name: 'dashboard',
       component: () => import('@/views/DashboardView.vue'),
@@ -42,25 +48,13 @@ const router = createRouter({
   ],
 })
 
-// Navigation guard — redirect ke /auth kalau belum login
+// Navigation guard
 router.beforeEach(async (to) => {
   const authStore = useAuthStore()
 
-  // Kalau ada access_token di URL hash, biarkan Supabase proses dulu
-  // lalu redirect ke dashboard setelah session terbentuk
-  const hash = window.location.hash
-  if (hash.includes('access_token=')) {
-    // Tunggu sebentar biar Supabase selesai proses token
-    await new Promise(resolve => setTimeout(resolve, 500))
-    await authStore.init()
-    if (authStore.isLoggedIn) {
-      // Bersihkan token dari URL lalu ke dashboard
-      window.history.replaceState(null, '', window.location.pathname)
-      return { name: 'dashboard' }
-    }
-  }
+  // Halaman callback — jangan diblock
+  if (to.name === 'auth-callback') return
 
-  // Tunggu sampai auth selesai init
   if (authStore.loading) {
     await authStore.init()
   }
