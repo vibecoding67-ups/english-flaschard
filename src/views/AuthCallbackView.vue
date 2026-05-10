@@ -8,22 +8,32 @@ const router = useRouter()
 const authStore = useAuthStore()
 
 onMounted(() => {
-  // Listen untuk auth state change — Supabase akan fire ini
-  // setelah berhasil exchange token dari URL
+  let resolved = false
+
   const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-    if (event === 'SIGNED_IN' && session) {
+    if (resolved) return
+
+    // Abaikan INITIAL_SESSION — tunggu event yang lebih spesifik
+    if (event === 'INITIAL_SESSION') return
+
+    resolved = true
+    subscription.unsubscribe()
+
+    if (session) {
       authStore.user = session.user
       authStore.session = session
-      subscription.unsubscribe()
       router.replace('/')
-    } else if (event === 'SIGNED_OUT' || (!session && event !== 'INITIAL_SESSION')) {
-      subscription.unsubscribe()
+    } else {
       router.replace('/auth')
     }
   })
 
-  // Timeout fallback — kalau 5 detik tidak ada event, cek manual
+  // Timeout fallback 8 detik
   setTimeout(async () => {
+    if (resolved) return
+    resolved = true
+    subscription.unsubscribe()
+
     const { data } = await supabase.auth.getSession()
     if (data.session) {
       authStore.user = data.session.user
@@ -32,7 +42,7 @@ onMounted(() => {
     } else {
       router.replace('/auth')
     }
-  }, 5000)
+  }, 8000)
 })
 </script>
 
