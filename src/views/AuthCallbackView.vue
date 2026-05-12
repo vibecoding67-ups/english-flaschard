@@ -10,10 +10,12 @@ const authStore = useAuthStore()
 onMounted(() => {
   let resolved = false
 
-  const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-    if (resolved) return
+  console.log('[Callback] mounted, URL hash:', window.location.hash)
 
-    // Abaikan INITIAL_SESSION — tunggu event yang lebih spesifik
+  const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+    console.log('[Callback] auth event:', event, 'session:', session?.user?.email ?? null)
+
+    if (resolved) return
     if (event === 'INITIAL_SESSION') return
 
     resolved = true
@@ -28,13 +30,15 @@ onMounted(() => {
     }
   })
 
-  // Timeout fallback 8 detik
   setTimeout(async () => {
     if (resolved) return
     resolved = true
     subscription.unsubscribe()
 
+    console.log('[Callback] timeout fallback — calling getSession')
     const { data } = await supabase.auth.getSession()
+    console.log('[Callback] getSession result:', data.session?.user?.email ?? null)
+
     if (data.session) {
       authStore.user = data.session.user
       authStore.session = data.session
